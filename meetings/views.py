@@ -1,6 +1,7 @@
 from django.forms import modelform_factory
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Meeting, Room
+from .forms import MeetingForm
 
 
 def meetings(request):
@@ -23,7 +24,6 @@ def meeting(request, id):
 
 
 def new_meeting(request):
-    MeetingForm = modelform_factory(Meeting, exclude=[])
     if request.method == "POST":
         form = MeetingForm(request.POST)
         if form.is_valid():
