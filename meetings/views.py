@@ -1,6 +1,5 @@
 from django.forms import modelform_factory
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Meeting, Room
 
 
@@ -25,7 +24,14 @@ def meeting(request, id):
 
 def new_meeting(request):
     MeetingForm = modelform_factory(Meeting, exclude=[])
-    form = MeetingForm()
+    if request.method == "POST":
+        form = MeetingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(to="/meetings", permanent=False)
+    else:
+        form = MeetingForm()
+
     return render(request, "website/new-meeting.html", {"form": form})
 
 
@@ -50,7 +56,16 @@ def rooms(request):
 
 def new_room(request):
     RoomForm = modelform_factory(Room, exclude=[])
-    form = RoomForm()
+
+    if request.method == "POST":
+        form = RoomForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(to="/meetings/rooms", permanent=False)
+
+    else:
+        form = RoomForm()
+
     return render(
         request,
         "website/new-room.html",

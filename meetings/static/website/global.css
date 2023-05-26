@@ -147,3 +147,8 @@ button:hover {
   transform: scale(1.01);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
+
+ul.errorlist li {
+  color: #ff3366;
+  font-size: 0.75rem;
+}
