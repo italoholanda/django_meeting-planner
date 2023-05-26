@@ -24,7 +24,6 @@ def detail(request, id):
 
 def room(request, id):
     room = get_object_or_404(Room, pk=id)
-    print(room)
     return render(
         request,
         "website/room.html",

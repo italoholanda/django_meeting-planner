@@ -1,31 +1,16 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>👾 room | {{name}}</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{% static 'website/global.css' %}" />
-  </head>
+{% extends 'website/base.html' %}
 
-  <body>
-    <header class="header">
-      <strong class="logo">👾 meeting planner</strong>
-    </header>
+{% block title %}👾 meeting | {{title}}{% endblock title %}
 
-    <div class="content">
-      <div class="card row">
-        <a href="{% url 'rooms' %}">🚪 rooms</a>
-        <a href="{% url 'welcome' %}">📅 meetings</a>
-      </div>
+{% block content %}
+<div class="card row">
+  <a href="{% url 'rooms' %}">🚪 rooms</a>
+  <a href="{% url 'welcome' %}">📅 meetings</a>
+</div>
 
-      <div class="card">
-        <h1>{{name}}</h1>
+<div class="card">
+  <h1>{{name}}</h1>
 
-        <p>floor {{floor}}, number {{room_number}}</p>
-      </div>
-    </div>
-  </body>
-</html>
+  <p>floor {{floor}}, number {{room_number}}</p>
+</div>
+{% endblock content %}
