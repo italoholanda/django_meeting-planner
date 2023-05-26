@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Welcome</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+
+  <body>
+    <script src="" async defer></script>
+    <!--Content-->
+    <header>
+      <a href="{% url 'welcome' %}">All meetings</a>
+    </header>
+
+    <h1>Rooms</h1>
+    <ul>
+      {% for room in rooms %}
+      <li>
+        <a href="{% url 'room' room.id %}"> {{room}} </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 728px;
+      margin: 0 auto;
+      padding: 4rem 1rem;
+      color: #444;
+    }
+
+    h1 {
+      color: #222;
+    }
+
+    ul {
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    li + li {
+      margin-top: 0.5rem;
+    }
+  </style>
+</html>
