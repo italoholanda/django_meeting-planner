@@ -1,0 +1,24 @@
+{% extends 'website/base.html' %}
+<!---->
+{% block title %}👾 new meeting{% endblock title %}
+<!---->
+{% block content %}
+<div class="card row">
+  <a href="{% url 'rooms' %}">🚪 rooms</a>
+  <a href="{% url 'meetings' %}">📅 meetings</a>
+</div>
+
+<div class="card">
+  <form method="post">
+    <fieldset>
+      <h1 class="form-title">Plan new meeting</h1>
+      <hr />
+      <br />
+      {{form}}
+      <br />
+      {% csrf_token %}
+      <button type="submit">Submit</button>
+    </fieldset>
+  </form>
+</div>
+{% endblock content %}

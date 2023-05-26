@@ -1,3 +1,4 @@
+from django.forms import modelform_factory
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Meeting, Room
@@ -22,16 +23,18 @@ def meeting(request, id):
     )
 
 
+def new_meeting(request):
+    MeetingForm = modelform_factory(Meeting, exclude=[])
+    form = MeetingForm()
+    return render(request, "website/new-meeting.html", {"form": form})
+
+
 def room(request, id):
     room = get_object_or_404(Room, pk=id)
     return render(
         request,
         "website/room.html",
-        {
-            "name": room.name,
-            "floor": room.floor,
-            "room_number": room.room_number
-        },
+        {"name": room.name, "floor": room.floor, "room_number": room.room_number},
     )
 
 
@@ -41,5 +44,17 @@ def rooms(request):
         "website/rooms.html",
         {
             "rooms": Room.objects.all(),
+        },
+    )
+
+
+def new_room(request):
+    RoomForm = modelform_factory(Room, exclude=[])
+    form = RoomForm()
+    return render(
+        request,
+        "website/new-room.html",
+        {
+            "form": form,
         },
     )

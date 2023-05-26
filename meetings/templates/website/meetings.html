@@ -1,14 +1,6 @@
-{% extends 'website/base.html' %}
-
-{% load static %}
-
-{% block title %}👾 meeting planner{% endblock title %}
-
-{% block style %}
-  {% static 'website/welcome.css' %}
-{% endblock style %}
-
-{% block content %}
+{% extends 'website/base.html' %} {% load static %} {% block title %}👾 meeting
+planner{% endblock title %} {% block style %} {% static 'website/welcome.css' %}
+{% endblock style %} {% block content %}
 <div class="card row">
   <a href="{% url 'rooms' %}">🚪 rooms</a>
 </div>
@@ -21,6 +13,10 @@
   <hr />
   <p>Meetings:</p>
   <ul class="meetings">
+    <a href="{% url 'new-meeting'  %}">
+      <li class="meeting new">+ add meeting</li>
+    </a>
+    
     {% for meeting in meetings %}
     <a href="{% url 'meeting' meeting.id  %}">
       <li class="meeting">
@@ -36,4 +32,3 @@
   </ul>
 </div>
 {% endblock content %}
-

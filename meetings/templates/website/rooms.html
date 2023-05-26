@@ -1,7 +1,4 @@
-{% extends 'website/base.html' %}
-
-{% block title %}👾 rooms{% endblock title %}
-
+{% extends 'website/base.html' %} {% block title %}👾 rooms{% endblock title %}
 {% block content %}
 <div class="card row">
   <a href="{% url 'meetings' %}">📅 meetings</a>
@@ -13,6 +10,7 @@
     {% for room in rooms %}
     <li>🚪 <a href="{% url 'room' room.id %}"> {{room}} </a></li>
     {% endfor %}
+    <li>➕ <a href="{% url 'new-room' %}"> add new room </a></li>
   </ul>
 </div>
 {% endblock content %}
