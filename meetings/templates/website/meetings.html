@@ -22,7 +22,7 @@
   <p>Meetings:</p>
   <ul class="meetings">
     {% for meeting in meetings %}
-    <a href="{% url 'detail' meeting.id  %}">
+    <a href="{% url 'meeting' meeting.id  %}">
       <li class="meeting">
         <span>📅</span>
         <p>{{meeting.title}}</p>

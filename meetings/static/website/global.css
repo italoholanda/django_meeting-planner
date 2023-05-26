@@ -4,6 +4,10 @@ body {
   color: #fff;
 }
 
+a {
+  color: #fff;
+}
+
 hr {
   border: #333 1px solid;
   border-bottom: none;

@@ -3,15 +3,15 @@ from django.shortcuts import render, get_object_or_404
 from .models import Meeting, Room
 
 
-def welcome(request):
-    return render(request, "website/welcome.html", {"meetings": Meeting.objects.all()})
+def meetings(request):
+    return render(request, "website/meetings.html", {"meetings": Meeting.objects.all()})
 
 
-def detail(request, id):
+def meeting(request, id):
     meeting = get_object_or_404(Meeting, pk=id)
     return render(
         request,
-        "website/detail.html",
+        "website/meeting.html",
         {
             "title": meeting.title,
             "start_time": meeting.start_time,
@@ -43,7 +43,3 @@ def rooms(request):
             "rooms": Room.objects.all(),
         },
     )
-
-
-def about(request):
-    return HttpResponse("About page!!!")
